@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Organizer</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<style>
+    :root {
+        --light-green: #B0D77E;
+        --green: #66AD00;
+        --white: #FFFFFF;
+        --font-family: 'Poppins', sans-serif;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: var(--font-family);
+    }
+
+    body, html {
+        height: 100%;
+    }
+
+    .container {
+        display: flex;
+        height: 100vh;
+    }
+
+    .sidebar {
+        background-color: var(--white);
+        padding: 20px;
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .logo {
+        width: 120px;
+        margin-bottom: 20px;
+    }
+
+    .nav-buttons {
+        width: 100%;
+        flex-grow: 1; 
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+        padding: 10px 0; 
+    }
+
+    .nav-btn, .logout-btn {
+        width: 100%;
+        padding: 10px 0;
+        border: 2px solid var(--green);
+        background-color: var(--white);
+        color: var(--green);
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    ::placeholder {
+        color: var(--green);
+    }
+
+    .nav-btn, .nav-btn:focus, .nav-btn:active {
+        text-decoration: none;
+    }
+
+    .nav-btn:hover, .logout-btn:hover {
+        background-color: var(--green);
+        color: var(--white);
+    }
+
+    .selected {
+        background-color: var(--green);
+        color: var(--white);
+    }
+
+    .logout-btn {
+        margin-top: auto;
+        background-color: var(--green);
+        color: var(--white);
+        border: none;
+    }
+
+    .logout-btn:hover {
+        background-color: var(--white);
+        color: var(--green);
+        border: 2px solid var(--green);
+    }
+
+    .main-content {
+        flex-grow: 1;
+        background-color: var(--light-green);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        background-color: var(--white);
+        padding: 30px;
+        border-radius: 10px;
+        width: 450px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        position: relative;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 10px 40px;
+        border: 2px solid var(--green);
+        border-radius: 5px;
+        font-size: 16px;
+        color: var(--green);
+    }
+
+    .form-group input[readonly] {
+        background-color: transparent; 
+        color: var(--green); 
+        border: 2px solid var(--green);
+        border-radius: 5px;
+        cursor: not-allowed;
+    }
+
+    .form-group input::placeholder {
+        color: var(--green);
+    }
+
+    .form-group .icon {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+        font-size: 24px;
+        color: var(--green);
+    }
+
+    .toggle-password {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        font-size: 24px;
+        color: var(--green);
+    }
+
+    .submit-btn {
+        padding: 10px;
+        border: none;
+        background-color: var(--green);
+        color: var(--white);
+        font-weight: bold;
+        font-size: 16px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+</style>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <img src="images/logo.png" alt="Sports League Organizer Logo" class="logo">
+            <div class="nav-buttons">
+                <a href="add_organizer.html" class="nav-btn selected">Add Organizer</a>
+                <button class="nav-btn">Accounts</button>
+                <button class="nav-btn" onclick="window.location.href='organize_league.html'">Organize League</button>
+                <button class="nav-btn">Registrations</button>
+                <button class="nav-btn">Approved Registrations</button>
+                <button class="nav-btn">Declined Registrations</button>
+                <button class="nav-btn">Bookings</button>
+                <button class="nav-btn">Approved Bookings</button>
+                <button class="nav-btn">Declined Bookings</button>
+            </div>
+            <button class="logout-btn">Logout</button>
+        </aside>
+        <main class="main-content">
+            <form>
+                <div class="form-group">
+                    <span class="material-icons icon">person</span>
+                    <input type="text" placeholder="Username" required>
+                </div>
+                <div class="form-group">
+                    <span class="material-icons icon">lock</span>
+                    <input type="password" id="password" placeholder="Password" required>
+                    <span class="material-icons toggle-password" onclick="togglePassword()">visibility</span>
+                </div>
+                <div class="form-group">
+                    <span class="material-icons icon">badge</span>
+                    <input type="text" value="Organizer" readonly>
+                </div>
+                <button type="submit" class="submit-btn">Add Organizer</button>
+            </form>
+        </main>
+    </div>
+
+    <script>
+        function togglePassword() {
+            const passwordField = document.getElementById("password");
+            const passwordIcon = document.querySelector(".toggle-password");
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                passwordIcon.textContent = "visibility_off";
+            } else {
+                passwordField.type = "password";
+                passwordIcon.textContent = "visibility";
+            }
+        }
+    </script>
+</body>
+</html>

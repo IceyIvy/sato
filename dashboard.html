@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <img src="images/logo.png" alt="Sports League Organizer Logo" class="logo">
+            <div class="nav-buttons">
+                <!-- <button class="nav-btn" onclick="window.location.href='add_organizer.html'">Add Organizer</button> -->
+                <button class="nav-btn">Add Organizer</button>
+                <button class="nav-btn">Accounts</button>
+                <!-- <button class="nav-btn" onclick="window.location.href='organize_league.html'">Organize League</button> -->
+                <button class="nav-btn">Organize League</button>
+                <button class="nav-btn">Registrations</button>
+                <button class="nav-btn">Approved Registrations</button>
+                <button class="nav-btn">Declined Registrations</button>
+                <button class="nav-btn">Bookings</button>
+                <button class="nav-btn">Approved Bookings</button>
+                <button class="nav-btn">Declined Bookings</button>
+            </div>
+            <button class="logout-btn" onclick="redirectToLogin()">Logout</button>
+        </aside>
+        <main class="main-content">
+            <h1>Hello,<br>Organizer!</h1>
+        </main>
+    </div>
+
+    <script>
+        function redirectToLogin(){
+            window.location.href = "login.html";
+        }
+    </script>
+
+    <style>
+        :root {
+        --light-green: #B0D77E;
+        --green: #66AD00;
+        --white: #FFFFFF;
+        --font-family: 'Poppins', sans-serif;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: var(--font-family);
+    }
+
+    body, html {
+        height: 100%;
+    }
+
+    .container {
+        display: flex;
+        height: 100vh;
+    }
+
+    .sidebar {
+        background-color: var(--white);
+        padding: 20px;
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .logo {
+        width: 120px;
+        margin-bottom: 20px;
+    }
+
+    .nav-buttons {
+        width: 100%;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+        padding: 10px 0;
+    }
+
+    .nav-btn, .logout-btn {
+        width: 100%;
+        padding: 10px 0;
+        border: 2px solid var(--green);
+        background-color: var(--white);
+        color: var(--green);
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .nav-btn:hover, .logout-btn:hover {
+        background-color: var(--green);
+        color: var(--white);
+    }
+
+    .selected {
+        background-color: var(--green);
+        color: var(--white);
+    }
+
+    .logout-btn {
+        margin-top: auto;
+        background-color: var(--green);
+        color: var(--white);
+        border: 2px solid white;
+    }
+
+    .logout-btn:hover {
+        background-color: var(--white);
+        color: var(--green);
+        border: 2px solid var(--green);
+    }
+
+    .main-content {
+        flex-grow: 1;
+        background-color: var(--light-green);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .main-content h1 {
+        font-size: 50px;
+        color: var(--green);
+        text-align: center;
+        font-weight: 700;
+    }
+    </style>
+</body>
+</html>
